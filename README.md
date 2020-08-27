@@ -1,19 +1,20 @@
 # Market
 
-To start your Phoenix server:
+![Test [CI]](https://github.com/shiryel/test-market/workflows/Test%20%5BCI%5D/badge.svg)
+![Code quality [CI]](https://github.com/shiryel/test-market/workflows/Code%20quality%20%5BCI%5D/badge.svg)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+A GraphQL API to see market analitics
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Dev run:
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+```
+# Install deps
+mix deps.get
 
-## Learn more
+# Setup Postgres
+podman run -d --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres
+mix ecto.setup
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+# Start server
+mix phx.server
+```
