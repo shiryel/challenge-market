@@ -34,7 +34,7 @@ Put the token on the HTTP Header as:
 
 name | content
 -----|--------
-Authorization | Bearer <TOKEN>
+Authorization | Bearer ~TOKEN~
 
 ### Get current user info
 
