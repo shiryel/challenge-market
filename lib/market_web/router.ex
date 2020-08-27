@@ -1,12 +1,18 @@
 defmodule MarketWeb.Router do
+  @dialyzer {:nowarn_function, __checks__: 0}
   use MarketWeb, :router
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
-  scope "/api", MarketWeb do
-    pipe_through :api
+  if Mix.env() == :dev do
+    forward "/api", Absinthe.Plug.GraphiQL,
+      schema: MarketWeb.Schema,
+      socket: MarketWeb.UserSocket,
+      json_codec: Phoenix.json_library(),
+      interface: :playground
+  else
+    forward "/api", Absinthe.Plug,
+      schema: MarketWeb.Schema,
+      socket: MarketWeb.UserSocket,
+      json_codec: Phoenix.json_library()
   end
 
   # Enables LiveDashboard only for development
