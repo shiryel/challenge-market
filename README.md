@@ -18,3 +18,33 @@ mix ecto.setup
 # Start server
 mix phx.server
 ```
+
+## GraphQL examples
+
+### Login
+```
+mutation {
+	login(email: "vinicius@hotmail.com", password: "test") {
+	  token
+	}
+}
+```
+
+Put the token on the HTTP Header as:
+
+name | content
+-----|--------
+Authorization | Bearer <TOKEN>
+
+### Get current user info
+
+(needs to be logged as the user)
+
+```
+query {
+  me {
+    email
+    name
+  }
+}
+```

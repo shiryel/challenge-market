@@ -48,5 +48,6 @@ defmodule MarketWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug MarketWeb.Endpoint.Context
   plug MarketWeb.Router
 end

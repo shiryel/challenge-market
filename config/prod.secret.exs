@@ -4,6 +4,15 @@
 # remember to add this file to your .gitignore.
 use Mix.Config
 
+# Configure salt
+config :market, 
+  user_salt: System.get_env("USER_SALT") || 
+    raise """
+    environment variable USER_SALT is missing.
+    You can generate one by calling: mix phx.gen.secret
+    """
+
+# Configure database
 database_url =
   System.get_env("DATABASE_URL") ||
     raise """

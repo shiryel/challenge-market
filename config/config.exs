@@ -8,7 +8,9 @@
 use Mix.Config
 
 config :market,
-  ecto_repos: [Market.Repo]
+  ecto_repos: [Market.Repo],
+  user_salt: "user_salt"
+
 
 # Configures the endpoint
 config :market, MarketWeb.Endpoint,
