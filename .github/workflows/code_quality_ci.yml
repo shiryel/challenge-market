@@ -1,0 +1,28 @@
+name: Code quality [CI]
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup elixir
+      uses: actions/setup-elixir@v1
+      with:
+        elixir-version: 1.10.4
+        otp-version: 23
+
+    - name: Get deps
+      run: |
+        mix local.rebar --force
+        mix local.hex --force
+        mix deps.get
+
+    - name: Run Credo
+      run: mix credo
+
+    - name: Run Dialyzer
+      run: mix dialyzer
