@@ -51,7 +51,8 @@ defmodule Market.MixProject do
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:argon2_elixir, "~> 2.0"},
       {:absinthe, "~> 1.5.0"},
-      {:absinthe_plug, "~> 1.5"}
+      {:absinthe_plug, "~> 1.5"},
+      {:dataloader, "~> 1.0.0"}
     ]
   end
 

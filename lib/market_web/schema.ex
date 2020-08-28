@@ -6,11 +6,14 @@ defmodule MarketWeb.Schema do
   use Absinthe.Schema
   alias MarketWeb.Resolver.Session
 
+  import_types(Absinthe.Type.Custom)
   import_types(__MODULE__.User)
   import_types(__MODULE__.Session)
+  import_types(__MODULE__.Bottler)
 
   object :me_queries do
     import_fields(:user)
+    import_fields(:bottler_queries)
   end
 
   object :me_mutations do
