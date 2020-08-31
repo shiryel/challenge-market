@@ -1,6 +1,8 @@
 defmodule Market.Bottlers do
   @moduledoc """
   The Bottlers context.
+
+  Note: Its was a dataloader to resolve the N+1 problem
   """
 
   import Ecto.Query, warn: false

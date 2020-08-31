@@ -1,6 +1,8 @@
 defmodule Market.Accounts do
   @moduledoc """
   The Accounts context.
+
+  Note: It has a authenticate/2 method that is used in the authorization process
   """
 
   import Ecto.Query, warn: false
