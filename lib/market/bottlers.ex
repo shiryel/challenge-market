@@ -5,6 +5,7 @@ defmodule Market.Bottlers do
 
   import Ecto.Query, warn: false
   alias Market.Repo
+  alias __MODULE__.{Bottler, Pair, Provider}
 
   ##############
   # DATALOADER #
@@ -14,7 +15,7 @@ defmodule Market.Bottlers do
     Dataloader.Ecto.new(Repo, query: &query/2)
   end
 
-  def query(__MODULE__.Bottler = struct, args) do
+  def query(Bottler = struct, args) do
     Enum.reduce(args, struct, fn
       {:filter, filter}, query ->
         bottler_filter_query(query, filter)
@@ -25,7 +26,7 @@ defmodule Market.Bottlers do
     |> pagination_query(args)
   end
 
-  def query(__MODULE__.Pair = struct, args) do
+  def query(Pair = struct, args) do
     struct
     |> filter_names_query(args)
     |> pagination_query(args)
@@ -150,24 +151,6 @@ defmodule Market.Bottlers do
   end
 
   @doc """
-  Updates a provider.
-
-  ## Examples
-
-      iex> update_provider(provider, %{field: new_value})
-      {:ok, %Provider{}}
-
-      iex> update_provider(provider, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_provider(%Provider{} = provider, attrs) do
-    provider
-    |> Provider.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
   Deletes a provider.
 
   ## Examples
@@ -183,24 +166,9 @@ defmodule Market.Bottlers do
     Repo.delete(provider)
   end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking provider changes.
-
-  ## Examples
-
-      iex> change_provider(provider)
-      %Ecto.Changeset{data: %Provider{}}
-
-  """
-  def change_provider(%Provider{} = provider, attrs \\ %{}) do
-    Provider.changeset(provider, attrs)
-  end
-
   ########
   # PAIR #
   ########
-
-  alias Market.Bottlers.Pair
 
   @doc """
   Returns the list of pairs.
@@ -250,24 +218,6 @@ defmodule Market.Bottlers do
   end
 
   @doc """
-  Updates a pair.
-
-  ## Examples
-
-      iex> update_pair(pair, %{field: new_value})
-      {:ok, %Pair{}}
-
-      iex> update_pair(pair, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_pair(%Pair{} = pair, attrs) do
-    pair
-    |> Pair.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
   Deletes a pair.
 
   ## Examples
@@ -281,19 +231,6 @@ defmodule Market.Bottlers do
   """
   def delete_pair(%Pair{} = pair) do
     Repo.delete(pair)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking pair changes.
-
-  ## Examples
-
-      iex> change_pair(pair)
-      %Ecto.Changeset{data: %Pair{}}
-
-  """
-  def change_pair(%Pair{} = pair, attrs \\ %{}) do
-    Pair.changeset(pair, attrs)
   end
 
   ###########
@@ -350,24 +287,6 @@ defmodule Market.Bottlers do
   end
 
   @doc """
-  Updates a bottler.
-
-  ## Examples
-
-      iex> update_bottler(bottler, %{field: new_value})
-      {:ok, %Bottler{}}
-
-      iex> update_bottler(bottler, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_bottler(%Bottler{} = bottler, attrs) do
-    bottler
-    |> Bottler.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
   Deletes a bottler.
 
   ## Examples
@@ -381,18 +300,5 @@ defmodule Market.Bottlers do
   """
   def delete_bottler(%Bottler{} = bottler) do
     Repo.delete(bottler)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking bottler changes.
-
-  ## Examples
-
-      iex> change_bottler(bottler)
-      %Ecto.Changeset{data: %Bottler{}}
-
-  """
-  def change_bottler(%Bottler{} = bottler, attrs \\ %{}) do
-    Bottler.changeset(bottler, attrs)
   end
 end
