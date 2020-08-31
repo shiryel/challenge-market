@@ -7,7 +7,6 @@ defmodule Market.BottlersTest do
     alias Market.Bottlers.Provider
 
     @valid_attrs %{name: "some name"}
-    @update_attrs %{name: "some updated name"}
     @invalid_attrs %{name: nil}
 
     def provider_fixture(attrs \\ %{}) do
@@ -49,7 +48,6 @@ defmodule Market.BottlersTest do
     alias Market.Bottlers.Pair
 
     @valid_attrs %{name: "some name"}
-    @update_attrs %{name: "some updated name"}
     @invalid_attrs %{name: nil}
 
     def pair_fixture(attrs \\ %{}) do
@@ -91,7 +89,6 @@ defmodule Market.BottlersTest do
     alias Market.Bottlers.Bottler
 
     @valid_attrs %{date: ~U[2010-04-17 14:00:00Z], price: "120.5", quantity: 42}
-    @update_attrs %{date: ~U[2011-05-18 15:01:01Z], price: "456.7", quantity: 43}
     @invalid_attrs %{date: nil, price: nil, quantity: nil}
 
     def bottler_fixture(attrs \\ %{}) do

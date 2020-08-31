@@ -44,11 +44,16 @@ defmodule Market.Bottlers do
 
     Enum.reduce(args, struct, fn
       {:page, page}, query ->
-        query |> offset(^page - 1)
+        # page validation
+        if page > 0 do
+          query |> offset(^page - 1)
+        else
+          query
+        end
 
       {:page_size, page_size}, query ->
-        # page size limit
-        if page_size <= 50 do
+        # page size validation and limit
+        if page_size >= 0 and page_size <= 50 do
           query |> limit(^page_size)
         else
           query
