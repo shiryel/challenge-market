@@ -26,7 +26,7 @@ defmodule MarketWeb.Schema.Bottler do
     field :name, :string
     field :bottlers, list_of(:bottler) do
       arg :filter, non_null(:bottler_filter)
-      arg(:page_id, :integer)
+      arg(:page, :integer)
       arg(:page_size, :integer)
       resolve(dataloader(Bottlers))
     end
@@ -36,7 +36,7 @@ defmodule MarketWeb.Schema.Bottler do
     field :name, :string
     field :pairs, list_of(:pair) do
       arg(:filter_names, list_of(:string))
-      arg(:page_id, :integer)
+      arg(:page, :integer)
       arg(:page_size, :integer)
       resolve(dataloader(Bottlers))
     end
@@ -46,7 +46,7 @@ defmodule MarketWeb.Schema.Bottler do
   object :bottler_queries do
     field :providers, list_of(:provider) do
       arg(:filter_names, list_of(:string))
-      arg(:page_id, :integer)
+      arg(:page, :integer)
       arg(:page_size, :integer)
       resolve(&Resolver.Bottler.list_providers/3)
     end

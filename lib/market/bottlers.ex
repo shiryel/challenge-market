@@ -42,7 +42,7 @@ defmodule Market.Bottlers do
       |> limit(50)
 
     Enum.reduce(args, struct, fn
-      {:page_id, page}, query ->
+      {:page, page}, query ->
         query |> offset(^page - 1)
 
       {:page_size, page_size}, query ->
