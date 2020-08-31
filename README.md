@@ -27,6 +27,8 @@ You can access the graphQL API for tests in `http://localhost:4000/api`
 
 You can generate the docs with: `mix docs`
 
+The GraphQL API docs can be found running in the Dev mode, on the `schema` right button
+
 ## GraphQL examples
 
 ### Login
