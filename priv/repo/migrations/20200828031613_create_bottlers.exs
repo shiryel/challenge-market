@@ -20,7 +20,7 @@ defmodule Market.Repo.Migrations.CreateBottlers do
     create table(:bottlers) do
       add :price, :decimal
       add :quantity, :integer
-      add :date, :naive_datetime
+      add :date, :utc_datetime
       add :pair_id, references(:pairs, on_delete: :delete_all)
 
       timestamps()

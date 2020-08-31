@@ -8,7 +8,7 @@ defmodule Market.Bottlers.Bottler do
   schema "bottlers" do
     field :price, :decimal
     field :quantity, :integer
-    field :date, :naive_datetime
+    field :date, :utc_datetime
 
     belongs_to :pair, Market.Bottlers.Pair
 
@@ -21,5 +21,4 @@ defmodule Market.Bottlers.Bottler do
     |> cast(attrs, @required)
     |> validate_required(@required)
   end
-
 end

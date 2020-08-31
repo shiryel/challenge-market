@@ -6,6 +6,20 @@ defmodule MarketWeb.Schema do
   use Absinthe.Schema
   alias MarketWeb.Resolver.Session
 
+  def context(ctx) do
+    alias Market.Bottlers
+
+    loader =
+      Dataloader.new()
+      |> Dataloader.add_source(Bottlers, Bottlers.data())
+
+    Map.put(ctx, :loader, loader)
+  end
+
+  def plugins do
+    [Absinthe.Middleware.Dataloader | Absinthe.Plugin.defaults()]
+  end
+
   import_types(Absinthe.Type.Custom)
   import_types(__MODULE__.User)
   import_types(__MODULE__.Session)

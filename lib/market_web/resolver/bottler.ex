@@ -1,13 +1,7 @@
 defmodule MarketWeb.Resolver.Bottler do
-  def list_providers(_root, _params, _info) do
-    {:ok, []}
-  end
+  alias Market.Bottlers
 
-  def list_pairs(_root, _params, _info) do
-    {:ok, []}
-  end
-
-  def list_bottlers(_root, _params, _info) do
-    {:ok, []}
+  def list_providers(_root, args, _context) do
+    {:ok, Bottlers.list_providers(args)}
   end
 end
