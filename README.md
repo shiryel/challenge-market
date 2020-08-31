@@ -21,7 +21,7 @@ mix ecto.setup
 mix phx.server
 ```
 
-You can access the graphQL API for tests in `http://localhost:4000/api`
+You can access the GraphQL API interface for tests in `http://localhost:4000/api`
 
 ## Docs
 
