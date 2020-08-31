@@ -5,7 +5,9 @@
 
 A GraphQL API to see market analitics
 
-## Dev run:
+## Dev run
+
+`Tested with elixir version 1.10.4, OTP 23 and podman version 2.0.5`
 
 ```
 # Install deps
@@ -19,14 +21,20 @@ mix ecto.setup
 mix phx.server
 ```
 
+You can access the graphQL API for tests in `http://localhost:4000/api`
+
+## Docs
+
+You can generate the docs with: `mix docs`
+
 ## GraphQL examples
 
 ### Login
 ```
 mutation {
-	login(email: "vinicius@hotmail.com", password: "test") {
-	  token
-	}
+  login(email: "vinicius@hotmail.com", password: "test") {
+    token
+  }
 }
 ```
 
@@ -47,4 +55,32 @@ query {
     name
   }
 }
+```
+
+### Full query example
+
+(needs to be logged as the user)
+
+```
+query($filter: BottlerFilter!) {
+  me {
+    providers(page: 1, pageSize: 50, filterNames: ["CBOE"]) {
+      name
+	pairs(page: 1, pageSize: 20, filterNames: ["EUR/GBP", "EUR/USD", "GBP/USD"]) {
+        name
+        bottlers(page: 1, pageSize: 20, filter: $filter) {
+          date
+          price
+          quantity
+        }
+      }
+    }
+  }
+}
+```
+
+With the query variables:
+
+```
+{"filter": {"dateEnd": "2020-10-09T00:00:00Z"}}
 ```
