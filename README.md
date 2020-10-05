@@ -1,7 +1,7 @@
-# Market
+# Challenge Market
 
-![Test [CI]](https://github.com/shiryel/test-market/workflows/Test%20%5BCI%5D/badge.svg)
-![Code quality [CI]](https://github.com/shiryel/test-market/workflows/Code%20quality%20%5BCI%5D/badge.svg)
+![Test [CI]](https://github.com/shiryel/challenge-market/workflows/Test%20%5BCI%5D/badge.svg)
+![Code quality [CI]](https://github.com/shiryel/challenge-market/workflows/Code%20quality%20%5BCI%5D/badge.svg)
 
 A GraphQL API to see market analitics
 
